@@ -25,6 +25,7 @@ async function listPurchase() {
         paymentSystemAmount: r.paymentSystemAmount,
         storeId: r.storeId,
         product: {
+          id: r.productid,
           price: r.price,
           name: r.name,
           enabled: r.enabled,
