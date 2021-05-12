@@ -28,6 +28,10 @@ npm run test
 
 This will run all the tests
 
+## Dabatse
+
+The database is postgres as a service [elephantsql] (https://www.elephantsql.com/), theres no initial configuration to be done. All the conection handling is inside the project (/src/infrastructure/database)
+
 ## Usage
 
 This API uses graphQL, you should be able execute query and mutations at: http://localhost:4000/graphql
