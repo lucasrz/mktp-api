@@ -1,0 +1,32 @@
+Postgres Database Specification
+
+So I've decided to use postgres database as a service (https://www.elephantsql.com/), and created the following structure
+
+CREATE TABLE public.product (
+  id SERIAL PRIMARY key,
+  name varchar NOT NULL,
+  price numeric NOT NULL,
+  enabled boolean NOT null,
+  storeId int not null
+);
+
+CREATE TABLE public.store (
+  id SERIAL PRIMARY KEY,
+  name varchar NOT NULL,
+  fee int NOT NULL
+);
+
+CREATE TABLE public.purchase (
+  id SERIAL PRIMARY KEY,
+  userPaid numeric NOT NULL,
+  storeAmount numeric NOT NULL,
+  mktAmount numeric NOT NULL,
+  paymentSystemAmount numeric NOT NULL,
+  storeId INT NOT null,
+  productid INT NOT null
+);
+
+ALTER TABLE public.purchase ADD CONSTRAINT purchase_fk FOREIGN KEY (productid) REFERENCES public.product(id);
+
+The mains reason to create only one foreign key, is to keep it simple. 
+Because the only request that needs a relation is when you list all the purchases, that each one of it has a product.
